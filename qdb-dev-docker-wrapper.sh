@@ -22,4 +22,4 @@ echo "You can now run qdbsh or work in python."
 echo " "
 echo "***WARNING*** Exiting the shell will stop the container"
 
-/bin/bash
+/bin/bash -i

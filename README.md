@@ -34,4 +34,6 @@ It is not **meant for production use**.
 
 ### Usage
 
-    docker run -i --name qdb-dev bureau14/qdb-dev
+    docker run -i -t --name qdb-dev bureau14/qdb-dev
+
+Exiting the shell will stop the container.
