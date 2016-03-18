@@ -30,7 +30,7 @@ RUN        wget ${QDB_PHPAPI_URL}
 RUN        wget ${QDB_PYAPI_URL}
 #RUN        wget ${QDB_JAVAAPI_URL}
 RUN        ln -s -f /bin/true /usr/bin/chfn
-RUN        dpkg -i qdb-server_${QDB_VERSION}-${QDB_DEB_VERSION}.deb
+# RUN        dpkg -i qdb-server_${QDB_VERSION}-${QDB_DEB_VERSION}.deb
 RUN        dpkg -i qdb-utils_${QDB_VERSION}-${QDB_DEB_VERSION}.deb
 RUN        dpkg -i qdb-api_${QDB_VERSION}-${QDB_DEB_VERSION}.deb
 RUN        easy_install *.egg
