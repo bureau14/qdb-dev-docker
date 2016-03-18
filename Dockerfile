@@ -1,15 +1,15 @@
 FROM       ubuntu:latest
 
 # Set the locale
-RUN locale-gen en_US.UTF-8  
-ENV LANG en_US.UTF-8  
-ENV LANGUAGE en_US:en  
-ENV LC_ALL en_US.UTF-8 
+RUN locale-gen en_US.UTF-8
+ENV LANG en_US.UTF-8
+ENV LANGUAGE en_US:en
+ENV LC_ALL en_US.UTF-8
 
 # User configurable: define versions we are using
 ENV        QDB_VERSION     2.0.0
 ENV        QDB_DEB_VERSION 1
-ENV        QDB_URL         http://download.quasardb.net/quasardb/2.0/2.0.0rc4/server/qdb-server_${QDB_VERSION}-${QDB_DEB_VERSION}.deb
+# ENV        QDB_URL         http://download.quasardb.net/quasardb/2.0/2.0.0rc4/server/qdb-server_${QDB_VERSION}-${QDB_DEB_VERSION}.deb
 ENV        QDB_UTILS_URL   http://download.quasardb.net/quasardb/2.0/2.0.0rc4/utils/qdb-utils_${QDB_VERSION}-${QDB_DEB_VERSION}.deb
 ENV        QDB_CAPI_URL    http://download.quasardb.net/quasardb/2.0/2.0.0rc4/api/c/qdb-api_${QDB_VERSION}-${QDB_DEB_VERSION}.deb
 ENV        QDB_PHPAPI_URL  http://download.quasardb.net/quasardb/2.0/2.0.0rc4/api/php/quasardb-2.0.0.tgz
@@ -23,7 +23,7 @@ ENV        QDB_PYAPI_URL   http://download.quasardb.net/quasardb/2.0/2.0.0rc4/ap
 RUN        apt-get update
 RUN        apt-get install -y wget
 RUN        apt-get -y install python-setuptools php-pear php5-dev libpcre3-dev
-RUN        wget ${QDB_URL}
+# RUN        wget ${QDB_URL}
 RUN        wget ${QDB_UTILS_URL}
 RUN        wget ${QDB_CAPI_URL}
 RUN        wget ${QDB_PHPAPI_URL}
@@ -46,7 +46,7 @@ VOLUME     ["/var/lib/qdb/db"]
 WORKDIR    /var/lib/qdb
 
 # Always launch qdb process
-ENTRYPOINT ["/usr/sbin/qdbd-docker-wrapper.sh"]
+ENTRYPOINT ["bash"]
 
 # Expose the port qdbd is listening at
 EXPOSE     2836
