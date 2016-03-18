@@ -32,3 +32,6 @@ It is not **meant for production use**.
    (alternatively, you can build an image from Dockerfile: `docker build -t="qdb-dev" github.com/bureau14/qdb-dev-docker`)
 
 
+### Usage
+
+    docker run -i --name qdb-dev bureau14/qdb-dev
