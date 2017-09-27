@@ -1,11 +1,5 @@
 FROM       ubuntu:latest
 
-# Set the locale
-RUN locale-gen en_US.UTF-8
-ENV LANG en_US.UTF-8
-ENV LANGUAGE en_US:en
-ENV LC_ALL en_US.UTF-8
-
 # User configurable: define versions we are using
 ENV        QDB_VERSION     2.1.0
 ENV        QDB_DEB_VERSION 1
@@ -21,8 +15,8 @@ ENV        QDB_PYAPI_URL   http://download.quasardb.net/quasardb/2.1/2.1.0-beta.
 #############################
 
 RUN        apt-get update
-RUN        apt-get install -y wget
-RUN        apt-get -y install python-setuptools php-pear php5-dev libpcre3-dev
+RUN        apt-get install -y wget locales
+RUN        apt-get install -y python-setuptools php-pear php-dev libpcre3-dev
 RUN        wget ${QDB_URL}
 RUN        wget ${QDB_HTTPD_URL}
 RUN        wget ${QDB_UTILS_URL}
@@ -36,7 +30,13 @@ RUN        dpkg -i qdb-utils_${QDB_VERSION}-${QDB_DEB_VERSION}.deb
 RUN        dpkg -i qdb-api_${QDB_VERSION}-${QDB_DEB_VERSION}.deb
 RUN        easy_install *.egg
 RUN        pecl install quasardb*.tgz
-RUN        echo "extension=quasardb.so" > /etc/php5/cli/conf.d/quasardb.ini
+RUN        echo "extension=quasardb.so" > /etc/php/7.0/cli/conf.d/quasardb.ini
+
+# Set the locale
+RUN        locale-gen en_US.UTF-8
+ENV        LANG en_US.UTF-8
+ENV        LANGUAGE en_US:en
+ENV        LC_ALL en_US.UTF-8
 
 ADD        qdb-dev-docker-wrapper.sh /usr/sbin/
 
