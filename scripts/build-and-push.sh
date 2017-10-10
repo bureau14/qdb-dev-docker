@@ -11,7 +11,7 @@ fi
 VERSION=$1
 
 SCRIPTDIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
-IMAGE="bureau14/qdb"
+IMAGE="bureau14/qdb-dev"
 
 docker build  -t ${IMAGE}:build --build-arg QDB_VERSION=${VERSION} ${SCRIPTDIR}/..
 
