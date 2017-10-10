@@ -1,4 +1,4 @@
-FROM       ubuntu:latest
+FROM       ubuntu:xenial
 
 ARG        QDB_VERSION=2.1.0master
 ENV        QDB_DEB_VERSION=1
