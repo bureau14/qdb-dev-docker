@@ -2,7 +2,7 @@ FROM       ubuntu:xenial
 
 ARG        QDB_VERSION=2.1.0master
 ENV        QDB_DEB_VERSION=1
-
+ENV        TERM=dumb
 #############################
 # NO EDITING BELOW THIS LINE
 #############################
